@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-4</title>
+</head>
+<style>
+    body{
+        background-color: #282020;
+        color: rgb(255, 254, 254);
+    }
+</style>
+<body>
+    <ul class="langauge">
+        <li>Javascript</li>
+    </ul>
+    
+</body>
+<script>
+
+    //Way-1 Normal Approach
+    function addLangauge(langName){
+        //Creating elements
+        const li = document.createElement('li');
+        // Addiing value
+        li.innerHTML = `${langName}`
+        //Targeting where to display
+        document.querySelector('.langauge').appendChild(li)
+    }
+
+     addLangauge("Python")
+     addLangauge("TypeScript")
+
+     //way-2 Optimized way => without traversing all HTML elements, direct targeting the value
+
+     function addOptiLanguage(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.langauge').appendChild(li)
+     }
+
+     addOptiLanguage("Golanguage")
+
+     //Way-3 Edit
+     const secondLang = document.querySelector("li:nth-child(2)");
+     const newli = document.createElement("li");
+     newli.textContent = "Mojo";
+     secondLang.replaceWith(newli)
+
+
+     //Way-4 Edit
+     const firstLang = document.querySelector("li:first-child")
+     firstLang.outerHTML = '<li>Ruby</li>'
+
+     //Removing elements
+     const lastLang = document.querySelector('li:last-child')
+     lastLang.remove();
+
+</script>
+
+</html>
